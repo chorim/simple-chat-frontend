@@ -1,0 +1,24 @@
+<template>
+	<div>
+		<top-header/>
+		<div class="container">
+			<nuxt/>
+		</div>
+		<bottom-footer/>
+	</div>
+</template>
+
+<script>
+  import TopHeader from '~/components/TopHeader.vue'
+  import BottomFooter from '~/components/BottomFooter.vue'
+  export default {
+    components: {
+      TopHeader,
+      BottomFooter
+    }
+  }
+</script>
+
+<style lang="scss">
+	@import '../assets/scss/app.scss';
+</style>
