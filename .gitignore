@@ -59,3 +59,12 @@ typings/
 
 # next.js build output
 .next
+
+# Nuxt build
+.nuxt
+
+# Nuxt generate
+dist
+
+# Jetbrains IDE config files
+.idea/
