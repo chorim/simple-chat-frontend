@@ -1,3 +1,4 @@
+require('dotenv').config()
 const path = require('path')
 
 module.exports = {
@@ -37,11 +38,13 @@ module.exports = {
       }
     },
     // https://github.com/bootstrap-vue/bootstrap-vue/issues/3397
-    transpile: ['bootstrap-vue']
+    transpile: ['bootstrap-vue'],
+    vendor: ['socket.io-client']
   },
   modules: [
     'bootstrap-vue/nuxt',
     '@nuxtjs/style-resources',
+    '@nuxtjs/dotenv'
   ],
   styleResources: {
     scss: [
@@ -61,6 +64,12 @@ module.exports = {
   //   bootstrapCSS: false, // Or `css: false`
   //   bootstrapVueCSS: false // Or `bvCSS: false`
   // },
+  plugins: [
+    '~/plugins/socket.io.js'
+  ],
+  env: {
+    SOCKET_HOST_URL: process.env.SOCKET_HOST_URL || 'http://localhost:9941'
+  }
 
 }
 
