@@ -44,7 +44,8 @@ module.exports = {
   modules: [
     'bootstrap-vue/nuxt',
     '@nuxtjs/style-resources',
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '@nuxtjs/axios'
   ],
   styleResources: {
     scss: [
@@ -65,10 +66,14 @@ module.exports = {
   //   bootstrapVueCSS: false // Or `bvCSS: false`
   // },
   plugins: [
-    '~/plugins/socket.io.js'
+    '~/plugins/socket.io.js',
+    '~/plugins/axios.js'
   ],
   env: {
     SOCKET_HOST_URL: process.env.SOCKET_HOST_URL || 'http://localhost:9941'
+  },
+  axios: {
+    baseURL: process.env.API_HOST_URL || 'http://localhost:3000/v1'
   }
 
 }
