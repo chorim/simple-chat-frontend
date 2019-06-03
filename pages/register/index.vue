@@ -42,6 +42,7 @@
 
 <script>
   export default {
+    middleware: 'isGuest',
     data() {
       return {
         form: {
@@ -61,6 +62,13 @@
 
           if (auth.status === 200) {
             alert("Register success")
+
+	          await this.$auth.loginWith('local', {
+	            data: {
+	              username: this.form.username,
+		            password: this.form.password
+	            }
+	          })
             this.$router.replace('/')
           }
 

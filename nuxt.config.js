@@ -45,7 +45,8 @@ module.exports = {
     'bootstrap-vue/nuxt',
     '@nuxtjs/style-resources',
     '@nuxtjs/dotenv',
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
   ],
   styleResources: {
     scss: [
@@ -74,6 +75,17 @@ module.exports = {
   },
   axios: {
     baseURL: process.env.API_HOST_URL || 'http://localhost:3000/v1'
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/auth/login', method: 'post', propertyName: 'token' },
+          user: { url: '/users/me', method: 'get', propertyName: 'user'},
+          logout: false
+        }
+      }
+    }
   }
 
 }
