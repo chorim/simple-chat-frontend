@@ -68,7 +68,7 @@ export default {
               password: this.form.password
             }
           })
-          this.$router.push('/room')
+          this.$router.push('/')
 
         // socket.emit('authenticate', {token: auth.token})
 
