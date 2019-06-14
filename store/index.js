@@ -14,7 +14,7 @@ export const getters = {
 
   myInfo(state) {
     return state.auth.user
-  }
+  },
 
 }
 

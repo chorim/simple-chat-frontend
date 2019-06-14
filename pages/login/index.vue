@@ -70,11 +70,13 @@ export default {
           })
           this.$router.push('/')
 
-        // socket.emit('authenticate', {token: auth.token})
+        console.log("token", this.$auth.$storage._state["_token.local"].split(' ')[1])
+        socket.emit('authenticate', {token: this.$auth.$storage._state["_token.local"].split(' ')[1]})
 
         // socket.emit('login', {username: this.form.username})
 
       } catch (e) {
+        console.log(e)
         if (e.response.status === 401) {
           alert('Login failed. Please confirm your username or password')
         } else if (e.response.status === 403) {
