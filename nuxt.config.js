@@ -80,8 +80,8 @@ module.exports = {
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/auth/login', method: 'post', propertyName: 'token' },
-          user: { url: '/users/me', method: 'get', propertyName: 'user'},
+          login: {url: '/auth/login', method: 'post', propertyName: 'token'},
+          user: {url: '/users/me', method: 'get', propertyName: 'user'},
           logout: false
         }
       }

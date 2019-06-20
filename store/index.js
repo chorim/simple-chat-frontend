@@ -16,5 +16,9 @@ export const getters = {
     return state.auth.user
   },
 
+  getToken(state) {
+    return state
+  }
+
 }
 
