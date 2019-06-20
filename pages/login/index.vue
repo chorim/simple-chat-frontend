@@ -62,13 +62,13 @@ export default {
   methods: {
     async onSubmit() {
       try {
-          await this.$auth.loginWith('local', {
-            data: {
-              username: this.form.username,
-              password: this.form.password
-            }
-          })
-          this.$router.push('/')
+	      await this.$auth.loginWith('local', {
+		      data: {
+			      username: this.form.username,
+			      password: this.form.password
+		      }
+	      })
+	      this.$router.push('/')
 
       } catch (e) {
         console.log(e)

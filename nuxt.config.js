@@ -46,7 +46,8 @@ module.exports = {
     '@nuxtjs/style-resources',
     '@nuxtjs/dotenv',
     '@nuxtjs/axios',
-    '@nuxtjs/auth'
+    '@nuxtjs/auth',
+    'cookie-universal-nuxt'
   ],
   styleResources: {
     scss: [
@@ -67,7 +68,8 @@ module.exports = {
   //   bootstrapVueCSS: false // Or `bvCSS: false`
   // },
   plugins: [
-    '~/plugins/socket.io.js',
+    { src: '~/plugins/socket.io.js', ssr: false},
+    // '~/plugins/socket.io.js',
     '~/plugins/axios.js'
   ],
   env: {
