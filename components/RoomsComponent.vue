@@ -7,6 +7,9 @@
       </tr>
       </thead>
       <tbody id="roomList">
+      <tr v-for="(item, index) in rooms" :key="index">
+	      <td>{{ item.title }}</td>
+      </tr>
       </tbody>
     </table>
   </div>
