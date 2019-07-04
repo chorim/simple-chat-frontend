@@ -8,7 +8,7 @@
       </thead>
       <tbody id="roomList">
       <tr v-for="(item, index) in rooms" :key="index">
-	      <td>{{ item.title }}</td>
+	      <td @click="joinRoom(item.title)">{{ item.title }}</td>
       </tr>
       </tbody>
     </table>
@@ -17,6 +17,14 @@
 
 <script>
   export default {
-    props: ['rooms']
+    props: ['rooms'],
+    methods: {
+      joinRoom(id) {
+        if (confirm("Join Room? " + id)) {
+          this.$socket.emit("join-room", {id: id})
+          this.$router.push('/chat')
+        }
+      }
+    }
   }
 </script>

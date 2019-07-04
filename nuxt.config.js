@@ -47,7 +47,8 @@ module.exports = {
     '@nuxtjs/dotenv',
     '@nuxtjs/axios',
     '@nuxtjs/auth',
-    'cookie-universal-nuxt'
+    'cookie-universal-nuxt',
+    'nuxt-fontawesome'
   ],
   styleResources: {
     scss: [
@@ -88,7 +89,15 @@ module.exports = {
         }
       }
     }
-  }
+  },
+  fontawesome: {
+    imports: [
+      {
+        set: '@fortawesome/free-solid-svg-icons' ,
+        icons: [ 'fas' ]
+      }
+    ]
+  },
 
 }
 

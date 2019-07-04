@@ -11,7 +11,6 @@
 </template>
 
 <script>
-  import socket from '~/plugins/socket.io'
   import RoomsComponent from '~/components/RoomsComponent.vue'
   import { mapGetters } from 'vuex'
   export default {
@@ -23,7 +22,7 @@
     },
     components: { RoomsComponent },
     beforeMount() {
-      this.requestRoom()
+      this.$socket.emit('request-load-room')
       this.$socket.on('new-room', (message) => this.rooms.push(message))
       this.$socket.on('load-room', (message) => this.rooms = this.rooms.concat(message))
     },
@@ -31,14 +30,9 @@
       ...mapGetters(['myInfo', 'getToken', 'getSocket'])
     },
     methods: {
-      requestRoom() {
-        this.$socket.emit('request-load-room')
-        console.log('requestRoomList called')
-      },
       createRoom() {
         var roomName = prompt('Please input room name to create')
         this.$socket.emit('create-room', {name: roomName})
-        console.log('createRoom called', {name: roomName})
       }
     }
   }
