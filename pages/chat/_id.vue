@@ -6,8 +6,7 @@
         <div class="chatbody">
           <div class="panel panel-primary">
             <div class="panel-body msg_container_base">
-              <BaseMessageSentComponent :sentMessage="sentMessages"/>
-              <BaseMessageReceiveComponent :receiveMessage="receiveMessages"/>
+              <BaseMessageComponent :messages="messages"/>
             </div>
             <div class="panel-footer">
               <div class="input-group">
@@ -27,23 +26,21 @@
 </template>
 
 <script>
-  import BaseMessageReceiveComponent from '~/components/BaseMessageReceiveComponent'
-  import BaseMessageSentComponent from '~/components/BaseMessageSentComponent'
+  import BaseMessageComponent from '~/components/BaseMessageComponent'
   export default {
     middleware: 'auth',
     data() {
       return {
         messageText: null,
-        sentMessages: [],
-        receiveMessages: []
+        messages: []
       }
     },
-    components: { BaseMessageReceiveComponent, BaseMessageSentComponent },
+    components: { BaseMessageComponent },
     beforeMount() {
       this.$socket.emit('saved-message', {id: this.$nuxt._route.params.id})
       this.$socket.on('exit-room', () => { this.$router.go(-1) })
-      this.$socket.on('receive-message', (message) => {
-        console.log(message)
+      this.$socket.on('receive-message', (messages) => {
+        this.messages = messages
       })
     },
     methods: {
@@ -53,9 +50,10 @@
             roomId: this.$nuxt._route.params.id,
             content: this.messageText
           })
-          this.sentMessages.push({
+          this.messages.push({
             content: this.messageText,
-            datetime: new Date()
+            datetime: new Date(),
+            username: this.$store.$auth.user.username
           })
           this.messageText = null
         }
