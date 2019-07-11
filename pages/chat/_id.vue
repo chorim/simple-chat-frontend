@@ -38,10 +38,11 @@
     components: { BaseMessageComponent },
     beforeMount() {
       this.$socket.emit('saved-message', {id: this.$nuxt._route.params.id})
+      this.$socket.on('saved-message', (messages) => this.messages = messages)
+    },
+    mounted() {
       this.$socket.on('exit-room', () => { this.$router.go(-1) })
-      this.$socket.on('receive-message', (messages) => {
-        this.messages = messages
-      })
+      this.$socket.on('receive-message', (messages) => this.messages.push(messages))
     },
     methods: {
       sendMessage() {

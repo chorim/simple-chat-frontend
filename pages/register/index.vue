@@ -59,8 +59,7 @@
             username: this.form.username,
             password: this.form.password
           })
-
-          if (auth.status === 200) {
+          if (auth.user) {
             alert("Register success")
 
 	          await this.$auth.loginWith('local', {
