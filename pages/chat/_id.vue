@@ -32,17 +32,17 @@
     data() {
       return {
         messageText: null,
-        messages: []
+        messages: [],
+        socket: '',
       }
     },
     components: { BaseMessageComponent },
     beforeMount() {
+      this.$socket.emit("join-room", {id: this.$nuxt._route.params.id})
+      this.$socket.on('receive-message', (messages) => { this.messages.push(messages) })
       this.$socket.emit('saved-message', {id: this.$nuxt._route.params.id})
       this.$socket.on('saved-message', (messages) => this.messages = messages)
-    },
-    mounted() {
       this.$socket.on('exit-room', () => { this.$router.go(-1) })
-      this.$socket.on('receive-message', (messages) => this.messages.push(messages))
     },
     methods: {
       sendMessage() {
@@ -58,10 +58,17 @@
           })
           this.messageText = null
         }
+      },
+    },
+    watch: {
+      messages: function () {
+        const msgBox = document.getElementsByClassName("msg_container_base")[0]
+        msgBox.scrollTop = msgBox.scrollHeight
       }
     }
   }
 </script>
+
 
 <style scoped>
 

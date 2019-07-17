@@ -21,7 +21,6 @@
     methods: {
       joinRoom(id) {
         if (confirm("Join Room? " + id)) {
-          this.$socket.emit("join-room", {id: id})
           this.$router.push({ path: `/chat/${id}` })
         }
       }
