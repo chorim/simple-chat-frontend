@@ -5,7 +5,7 @@
       <div class="col-12">
         <div class="chatbody">
           <div class="panel panel-primary">
-            <div class="panel-body msg_container_base">
+            <div class="panel-body msg_container_base" ref="messageContainer">
               <BaseMessageComponent :messages="messages"/>
             </div>
             <div class="panel-footer">
@@ -44,6 +44,9 @@
       this.$socket.on('saved-message', (messages) => this.messages = messages)
       this.$socket.on('exit-room', () => { this.$router.go(-1) })
     },
+    mounted() {
+      this.scrollToBottom()
+    },
     methods: {
       sendMessage() {
         if (this.messageText !== null) {
@@ -59,12 +62,14 @@
           this.messageText = null
         }
       },
+      scrollToBottom() {
+        this.$nextTick(() => {
+          this.$refs.messageContainer.scrollTop = this.$refs.messageContainer.scrollHeight
+        })
+      }
     },
     watch: {
-      messages: function () {
-        const msgBox = document.getElementsByClassName("msg_container_base")[0]
-        msgBox.scrollTop = msgBox.scrollHeight
-      }
+      'messages': 'scrollToBottom'
     }
   }
 </script>
@@ -131,8 +136,8 @@
 .msg_container_base{
   background: #e5e5e5;
   margin: 0;
-  padding: 0 10px 10px;
-  max-height:300px;
+  padding: 0 10px 20px;
+  max-height:500px;
   overflow-x:hidden;
 }
 .top-bar {

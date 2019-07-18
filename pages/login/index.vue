@@ -68,7 +68,7 @@ export default {
 			      password: this.form.password
 		      }
 	      })
-	      this.$router.push('/')
+	      this.$router.replace('/')
 
       } catch (e) {
         console.log(e)
