@@ -1,23 +1,41 @@
 # simple-chat-frontend
 
-> Nuxt.js project
+Frontend of real time simple chat app using Nuxt.js, socket.io.
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. I do not recommend use the current project on a live system.
+
+### Prerequisites
+
+What things you need to install the software.
+
+macOS / Linux :
+```
+NodeJS with NPM
+```
+
+## Build / Deployment
+Before you require modify .env file.
 
 ## Build Setup
 
-``` bash
-# install dependencies
-$ npm install # Or yarn install
+```bash
+# Install dependencies
+$ npm i
 
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
+# Build for production and launch server
+$ npm run build 
 $ npm start
-
-# generate static project
-$ npm run generate
 ```
 
-For detailed explanation on how things work, checkout the [Nuxt.js docs](https://github.com/nuxt/nuxt.js).
+## Built With
 
+* [Nuxt.js](https://nuxtjs.org/guide) - The web application framework for node.js
+* [Socket.io](https://socket.io/) - Real-time chat engine
+* [Axios](https://github.com/axios/axios) - Used to HTTP request
+* [Vus + Bootstrap](https://bootstrap-vue.js.org/) - Used to build ui components
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
