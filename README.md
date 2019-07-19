@@ -34,7 +34,7 @@ $ npm start
 * [Nuxt.js](https://nuxtjs.org/guide) - The web application framework for node.js
 * [Socket.io](https://socket.io/) - Real-time chat engine
 * [Axios](https://github.com/axios/axios) - Used to HTTP request
-* [Vus + Bootstrap](https://bootstrap-vue.js.org/) - Used to build ui components
+* [Vue + Bootstrap](https://bootstrap-vue.js.org/) - Used to build ui components
 
 ## License
 
