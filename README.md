@@ -4,7 +4,7 @@ Frontend of real time simple chat app using Nuxt.js, socket.io.
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. I do not recommend use the current project on a live system.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. I do not recommend use a production system.
 
 ### Prerequisites
 
